@@ -18,8 +18,8 @@ mail = Mail(app) # instantiate the mail class
 # configuration of mail 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'dummyattendanceserver@gmail.com'
-app.config['MAIL_PASSWORD'] = 'gggxsjkuubrcrmsf'
+app.config['MAIL_USERNAME'] = 'yourmail@gmail.com'
+app.config['MAIL_PASSWORD'] = 'yourpassword'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app) 
@@ -36,8 +36,8 @@ def sendmail():
     app.logger.info(download_path)
     msg = Message( 
                 'Hello', 
-                sender ='dummyattendanceserver@gmail.com', 
-                recipients = ['mbjaya05@gmail.com'] 
+                sender ='yourmail@gmail.com', 
+                recipients = ['tomail@gmail.com'] 
                ) 
     with app.open_resource(download_path, mode='rb') as fp:
             msg.attach(download_path, 'application/pdf', fp.read())
