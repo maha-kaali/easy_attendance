@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://kit.fontawesome.com/d4dab64158.js" crossorigin="anonymous"></script>
+<meta charset="utf8">
+<title>Class Attendance</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0">
+<style>
+/* these are special */
+.slip-reordering {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+}
+
+.slip-swiping-container {
+    overflow-x: hidden;
+}
+
+.slippylist li {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+/* the rest is junk for the demo page */
+.slippylist li.demo-allow-select {
+    padding: 1em;
+    line-height: 1.3;
+    user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+}
+.slippylist li.demo-allow-select span {
+    cursor: text;
+}
+
+body {
+    background: #fff   ;
+    font-family: Helvetica, Arial, sans-serif;
+    max-width: 40em;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+#scroll {
+    overflow-y: scroll;
+    max-height: 400px;
+}
+
+h1, h2, h3 {
+    color: #666;
+}
+h1 {
+    margin-left : 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    font-family: "Font Awesome 5 Free"; /* Replace with your font family if different */
+    font-weight: 900;
+    content: "\f0e2";
+
+}
+h3 {
+    margin-bottom: 0.2em;
+    margin-top: 0.3em;
+    margin-left : 1em;
+    font-family: "Font Awesome 5 Free"; /* Replace with your font family if different */
+    font-weight: 900;
+    content: "\f0e2";
+    
+}
+h1+p {
+    overflow:auto;
+    margin-top: 0.2em;
+}
+#undo-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size:25px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.undo-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+
+    font-family: "Font Awesome 5 Free"; /* Replace with your font family if different */
+    font-weight: 900;
+    content: "\f0e2"; /* Unicode for undo icon */
+    text-align: center;
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Adjust spacing as needed */
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+
+    background-color: #ddd;
+    font-family: "Font Awesome 5 Free"; /* Replace with your font family if different */
+    font-weight: 900;
+    text-align: center;
+  }
+  .button-container button: hover{
+    background-color: red;
+}
+
+</style>
+<body>
+<h1>{{class_name}}</h1>
+<h3>{{timestamp}}</h3>
+<div class="button-container">
+    
+    <button id="goback-button" onclick="history.back()">Go Back</button>
+    <button id="sendmail" onclick="window.location.href='/sendmail'">Send Mail</button>
+    <form id="my-form2" >
+        <button id="download-button" >
+            {% if download_path %}
+            <a href="{{ url_for('static', filename=download_path) }}">Download</a>
+          {% else %}
+            <p>No download available.</p>
+          {% endif %}</button>
+      </form>
+  </div>
+
